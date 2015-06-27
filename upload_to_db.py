@@ -4,10 +4,36 @@ import serial
 import MySQLdb
 
 def create_table():
-	print "in progress"
+  cursor.execute("""SELECT TABLE_NAME 
+                    FROM INFORMATION_SCHEMA.TABLES
+                    WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA="""+"\'"+str(d)+"\'")
+  result = cursor.fetchall()
+  for i in range(0,len(result)):
+    print str(i+1)+" "+str(result[i][0])
+  print "Make sure the new table name doesn't exists."
+  t=raw_input("enter the new table name:")
+  # Create table as per requirement
+  sql = """CREATE TABLE """+str(t)+""" 
+        (
+          SNo INT AUTO_INCREMENT,
+          Temp FLOAT(10,2),
+          Hum FLOAT(6,2),
+          LDR FLOAT(10,2),
+          PRIMARY KEY (SNo)
+        )"""
+  cursor.execute(sql)
+  return t
 
 def reuse_table():
-	print "in progress"
+  # Drop table if it already exist using execute() method.
+  cursor.execute("""SELECT TABLE_NAME 
+                    FROM INFORMATION_SCHEMA.TABLES
+                    WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA="""+"\'"+str(d)+"\'")
+  result = cursor.fetchall()
+  for i in range(0,len(result)):
+    print str(i+1)+" "+str(result[i][0])
+  return result[input("Enter Table No:")-1][0]
+
 
 def choose():
   print "\nWhat do you want to do?\n"
