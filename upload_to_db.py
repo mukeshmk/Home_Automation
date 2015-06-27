@@ -34,7 +34,6 @@ def reuse_table():
     print str(i+1)+" "+str(result[i][0])
   return result[input("Enter Table No:")-1][0]
 
-
 def choose():
   print "\nWhat do you want to do?\n"
   print "1. Create new Table\n"
@@ -48,7 +47,7 @@ def choose():
   else:
     print "wrong choice enter again:"
 	choose()
-
+    
 
 #establish connection to MySQL. You'll have to change this for your database.
 dbConn = MySQLdb.connect("localhost","root","1111") or die ("could not connect to database")
