@@ -3,8 +3,26 @@
 import serial 
 import MySQLdb
 
-def choose():
+def create_table():
 	print "in progress"
+
+def reuse_table():
+	print "in progress"
+
+def choose():
+  print "\nWhat do you want to do?\n"
+  print "1. Create new Table\n"
+  print "2. Re-Use existing Table\n"
+  ch = input("Enter your Choice:")
+
+  if ch == 1:
+    return create_table()
+  elif ch == 2:
+    return reuse_table()
+  else:
+    print "wrong choice enter again:"
+	choose()
+
 
 #establish connection to MySQL. You'll have to change this for your database.
 dbConn = MySQLdb.connect("localhost","root","1111") or die ("could not connect to database")
