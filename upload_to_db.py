@@ -19,6 +19,7 @@ def create_table():
           Temp FLOAT(10,2),
           Hum FLOAT(6,2),
           LDR FLOAT(10,2),
+          Time TIMESTAMP,
           PRIMARY KEY (SNo)
         )"""
   cursor.execute(sql)
@@ -65,7 +66,7 @@ cursor.execute(sql)
 
 t=choose()
 print t
-device = '/dev/ttyACM1' #this will have to be changed to the serial port you are using
+device = '/dev/ttyACM0' #this will have to be changed to the serial port you are using
 try:
   print "Trying...",device 
   arduino = serial.Serial(device, 9600) 
@@ -81,7 +82,7 @@ try:
     #Here we are going to insert the data into the Database
     pieces[2] = pieces[2].split("\r")[0]
     try:
-      cursor.execute("INSERT INTO "+str(t)+" (temp,hum,ldr) VALUES ('{}','{}','{}')".format(pieces[0],pieces[1],pieces[2]))
+      cursor.execute("INSERT INTO "+str(t)+" (temp,hum,ldr,Time) VALUES ('{}','{}','{}',CURRENT_TIMESTAMP)".format(pieces[0],pieces[1],pieces[2]))
       dbConn.commit() #commit the insert
     except MySQLdb.IntegrityError:
       print "failed to insert data"
