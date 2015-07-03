@@ -1,0 +1,5 @@
+Temperature Sensor - LM23 Module
+LDR Sensor - <no specs>
+IR Sensor - <no specs>
+Ultra Sonic - HC-SR04 Module
+Humidity & Temp Sensor - DHT11 Module
