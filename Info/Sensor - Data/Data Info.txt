@@ -1,0 +1,1 @@
+Sensor data from arduino1 and arduino2 split every 24hrs. Manual readings included.
