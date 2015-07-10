@@ -1,0 +1,11 @@
+Copy the Header Files to the following location:-
+
+..\Arduino\libraries\
+
+(.. <- Where ever the arduino setup files are)
+
+Then Download the Code and Import this Library From:-
+
+Sketch->Include Libraries->LowPower
+
+into your code.
